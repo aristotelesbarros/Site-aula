@@ -196,4 +196,15 @@ iframe {
   
 }
 
-
+.isfeatured.card_image{
+  position: relative;
+}
+.featured{
+  position: absolute;
+  background-color: blue;
+  color:black;
+  padding: 2px 8px;
+  right: 5px;
+  border-radius: 16px;
+  top: 6px;
+}

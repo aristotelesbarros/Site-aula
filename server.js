@@ -1,18 +1,27 @@
 const express = require ('express');
-const server = express ();
-const nunjucks = require ('nunjucks'); 
-server.use(express.static('public'))
-server.set ("view engine","html")
-nunjucks.configure ("views",{
-    express:server
+  const server = express ();
+  const nunjucks = require ('nunjucks');
+
+  const videos = require ("./data");
+
+
+
+  server.use(express.static('public'))
+   
+  server.set ("view engine","njk")
+  nunjucks.configure("views",{
+    express:server,
+    autoescape:false,
+    noCache:true
 })
 
 server.get("/",function(req,res){
-    return res.render ("index")
+    return res.render ("about")
     })
 
-    server.get ("/Videos.html",function(req,res){
-        return res.render ("Videos.html")
+    server.get("/videos", function(req,res){
+        const id=req.query.id
+        res.send(id)
     })
 
 server.listen (5000,function(){
